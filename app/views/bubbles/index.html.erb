@@ -1,0 +1,22 @@
+<%= periodically_call_remote :url => { :action => :refresh_bubbles, :last_updated => @last_retrieval } %>  
+
+
+<div id='update_placeholder'></div>
+<% screenname = 'mosofoco' %>
+<% @bubbles.each do |b| %> 
+	<% div_for b, :class => 'header_style' do %>
+		<div class="userlink">
+	   		<a href="aim:goim?screenname=<%= screenname %>"><%= b.user.login %></a> <em>is churning on ...</em></div>
+	 
+		<div class="bubble_body">
+			<%= b.converted_body %>
+		</div>
+		
+		<div class="bubble_delete">
+			<% if b.user == current_user %>
+				<%= link_to_remote 'kill this bubble', :url => bubble_path(b),  :method => :delete %>
+		    <% end %>
+		</div>
+		
+	<% end %>
+<% end %>
