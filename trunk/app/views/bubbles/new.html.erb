@@ -1,0 +1,10 @@
+<% form_for :bubble, @bubble, :url => {:action => :create } do |f| %> 
+
+	<p class="field"> 
+		<%= f.text_area  :body, :cols => '70' %>
+	</p> 
+	<p>
+		<%= submit_tag 'Create Bubble'%>
+	</p> 
+ 
+<% end %>

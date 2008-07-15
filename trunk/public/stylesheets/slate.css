@@ -1,0 +1,226 @@
+/* Stylesheet generated from TextMate theme
+ *
+ * Slate
+ * 
+ *
+ */
+
+/* Mostly to improve view within the TextMate HTML viewer */
+body {
+	margin: 0;
+	padding: 0;
+}
+
+pre.textmate-source {
+	padding: 0;
+	line-height: 1.3em;
+	word-wrap: break-word;
+}
+
+pre.textmate-source {
+	color: #F8F8F8;
+/*	background-color: rgba(27, 56, 73, 0.95); */
+	background-color: #1b3748;
+}
+
+#content
+{
+/*	background-color: rgba(27, 56, 73, 1); */
+	background-color: #1b3748;
+	border-color:#ddd;
+}
+#content h2 { color:#eee; }
+#content hr { color:#333; }
+#content hr { height:0px; border:0; border-top:1px solid #777; }
+
+
+pre.textmate-source .linenum {
+	width: 75px;
+	padding: 0.1em 1em 0.2em 0;
+	color: #888;
+	background-color: #eee;
+}
+pre.textmate-source span {
+   padding-top: 0.2em;
+   padding-bottom: 0.1em;
+}
+pre.textmate-source ::selection {
+	background-color: rgba(197, 223, 233, 0.50);
+}
+/* Comment */
+pre.textmate-source .comment {
+	color: #1E9AE0;
+	font-style: italic;
+}
+
+/* Constant */
+pre.textmate-source .constant {
+	color: #FF3A83;
+}
+
+/* Entity */
+pre.textmate-source .entity {
+	color: #EFE900;
+}
+
+/* Keyword */
+pre.textmate-source .keyword {
+	color: #FFAA00;
+}
+
+/* Storage */
+pre.textmate-source .storage {
+	color: #F6F080;
+}
+
+/* String */
+pre.textmate-source .string {
+	color: #55E439;
+}
+
+/* Support */
+pre.textmate-source .support {
+	color: #9DF39F;
+}
+
+/* Variable */
+pre.textmate-source .variable {
+	color: #FB9A4B;
+}
+
+/* Invalid */
+pre.textmate-source .invalid {
+	color: #F8F8F8;
+	background-color: rgba(216, 41, 13, 0.75);
+}
+
+/* Embedded Source */
+pre.textmate-source .text .source {
+	background-color: rgba(176, 179, 186, 0.08);
+}
+
+/* Embedded Source (Bright) */
+pre.textmate-source .text_html_ruby .source {
+	background-color: rgba(177, 179, 186, 0.13);
+}
+
+/* Entity inherited-class */
+pre.textmate-source .entity_other_inherited-class {
+	color: #4EE161;
+	font-style: italic;
+}
+
+/* String embedded-source */
+pre.textmate-source .string_quoted .source {
+	color: #9DF39F;
+}
+
+/* String constant */
+pre.textmate-source .string .constant {
+	color: #9DF39F;
+}
+
+/* String.regexp */
+pre.textmate-source .string_regexp {
+	color: #FFB454;
+}
+
+/* String variable */
+pre.textmate-source .string .variable {
+	color: #EDEF7D;
+}
+
+/* Support.function */
+pre.textmate-source .support_function {
+	color: #FFB454;
+}
+
+/* Support.constant */
+pre.textmate-source .support_constant {
+	color: #EB939A;
+}
+
+/* C/C++ Preprocessor Line */
+pre.textmate-source .other_preprocessor_c {
+	color: #8996A8;
+}
+
+/* C/C++ Preprocessor Directive */
+pre.textmate-source .other_preprocessor_c .entity {
+	color: #AFC4DB;
+}
+
+/* Doctype/XML Processing */
+pre.textmate-source .declaration_sgml_html .declaration_doctype, pre.textmate-source .declaration_sgml_html .declaration_doctype .entity, pre.textmate-source .declaration_sgml_html .declaration_doctype .string, pre.textmate-source .declaration_xml-processing, pre.textmate-source .declaration_xml-processing .entity, pre.textmate-source .declaration_xml-processing .string {
+	color: #73817D;
+}
+
+/* Meta.tag.A */
+pre.textmate-source .declaration_tag, pre.textmate-source .declaration_tag .entity, pre.textmate-source .meta_tag, pre.textmate-source .meta_tag .entity {
+	color: #9EFFFF;
+}
+
+/* css tag-name */
+pre.textmate-source .meta_selector_css .entity_name_tag {
+	color: #9EFFFF;
+}
+
+/* css#id */
+pre.textmate-source .meta_selector_css .entity_other_attribute-name_id {
+	color: #FFB454;
+}
+
+/* css.class */
+pre.textmate-source .meta_selector_css .entity_other_attribute-name_class {
+	color: #5FE461;
+}
+
+/* css property-name: */
+pre.textmate-source .support_type_property-name_css {
+	color: #9DF39F;
+}
+
+/* css property-value; */
+pre.textmate-source .meta_property-group .support_constant_property-value_css, pre.textmate-source .meta_property-value .support_constant_property-value_css {
+	color: #F6F080;
+}
+
+/* css @at-rule */
+pre.textmate-source .meta_preprocessor_at-rule .keyword_control_at-rule {
+	color: #F6AA11;
+}
+
+/* css additional-constants */
+pre.textmate-source .meta_property-value .support_constant_named-color_css, pre.textmate-source .meta_property-value .constant {
+	color: #EDF080;
+}
+
+/* css constructor.argument */
+pre.textmate-source .meta_constructor_argument_css {
+	color: #EB939A;
+}
+
+/* diff.header */
+pre.textmate-source .meta_diff, pre.textmate-source .meta_diff_header {
+	color: #F8F8F8;
+	font-style: italic;
+	background-color: #0E2231;
+}
+
+/* diff.deleted */
+pre.textmate-source .markup_deleted {
+	color: #F8F8F8;
+	background-color: #D03620;
+}
+
+/* diff.changed */
+pre.textmate-source .markup_changed {
+	color: #F8F8F8;
+	background-color: #C4B14A;
+}
+
+/* diff.inserted */
+pre.textmate-source .markup_inserted {
+	color: #F8F8F8;
+	background-color: #41A83E;
+}
