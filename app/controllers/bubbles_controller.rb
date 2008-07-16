@@ -1,10 +1,13 @@
 class BubblesController < ApplicationController
-  include AuthenticatedSystem
- 
   before_filter :login_required
   
   def index   
     @bubbles = Bubble.find_all_by_solved(false, :order => 'created_at DESC') 
+  end
+  
+  def list
+    @bubbles = Bubble.find_all_by_user_id(User.find_by_login(params[:id]), :order => 'created_at DESC')
+    render :action => "index"
   end
   
   def new
