@@ -2,21 +2,24 @@
 
 
 <div id='update_placeholder'></div>
-<% screenname = 'mosofoco' %>
 <% @bubbles.each do |b| %> 
 	<% div_for b, :class => 'header_style' do %>
 		<div class="userlink">
-	   		<a href="aim:goim?screenname=<%= screenname %>"><%= b.user.login %></a> <em>is churning on ...</em></div>
+	   	<%= link_to b.user.login, :controller=> "bubbles", :action => "list", :id => b.user.login %> <a href="aim:goim?screenname=<%= b.user.aim %>"><img src="http://big.oscar.aol.com/<%= b.user.aim %>?on_url=http://www.aim.com/remote/gr/MNB_online.gif&off_url=http://www.aim.com/remote/gr/MNB_offline.gif" alt="aim status" title="aim online indicator" border="0"/></a> <em>is churning on ...</em></div>
 	 
 		<div class="bubble_body">
-			<%= b.converted_body %>
-		</div>
-		
+		<%= b.converted_body %>
 		<div class="bubble_delete">
 			<% if b.user == current_user %>
-				<%= link_to_remote 'kill this bubble', :url => bubble_path(b),  :method => :delete %>
+				<%= link_to_remote '(pop)', :url => bubble_path(b),  :method => :delete %>
 		    <% end %>
 		</div>
+		</div>
+		
+
 		
 	<% end %>
 <% end %>
+<center>
+<div align="center" style="height:40px; display:inline; background:white;"><img src="http://www.aim.com/remote/gr/MNB_online.gif" style="display:inline;" alt="online" title="online" border="0"/> = Online  <img src="http://www.aim.com/remote/gr/MNB_offline.gif"  style="display:inline;" alt="offline" title="offline" border="0"/> = Offline</div></td>
+</center>
