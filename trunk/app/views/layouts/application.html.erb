@@ -18,9 +18,14 @@
 					<%= link_to "Create a bubble", new_bubble_path %> | 
 					<%= link_to "Logout", "/logout" %> |
 					<%= link_to "Report an issue", "http://code.google.com/p/bubbles/issues/list" %>
-				</h2>
+				</h2> 
+				<% form_tag({:controller => 'bubbles', :action => "search"}, {:class => "form"}) do  %>
+				   <%= text_field_tag :q %>     	
+				<% end %>
+			    
 			</div>
-		<% end %>
+		<% end %>  
+		
 		<%= yield %>
 	</div>
 </div>

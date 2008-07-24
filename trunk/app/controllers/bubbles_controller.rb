@@ -2,12 +2,21 @@ class BubblesController < ApplicationController
   before_filter :login_required
   
   def index   
-    @bubbles = Bubble.find_all_by_solved(false, :order => 'created_at DESC') 
+    @bubbles = Bubble.find_all_by_solved(false, :order => 'bubbles.created_at DESC', :include => :user) 
   end
   
   def list
-    @bubbles = Bubble.find_all_by_user_id(User.find_by_login(params[:id]), :order => 'created_at DESC')
+    @user = User.find_by_login(params[:id])
+    @bubbles = Bubble.find_all_by_user_id(@user.id, :order => 'bubbles.created_at DESC', :include => :user)
     render :action => "index"
+  end  
+  
+  def search
+    results = Bubble.find_by_solr(params[:q])
+    if results.total > 0
+      @bubbles = results.docs
+    end
+    render :action => "index" 
   end
   
   def new
@@ -26,7 +35,6 @@ class BubblesController < ApplicationController
   def destroy
     @bubble = Bubble.find(params[:id])
     @bubble.expire
-    #@bubble.destroy
     render :update do |page|
       page.visual_effect :fade, dom_id(@bubble)
     end
@@ -46,8 +54,8 @@ class BubblesController < ApplicationController
         end
         unless @new_bubbles.empty?
           @new_bubbles.each do |n|
-            page.insert_html :top, 'update_placeholder', :partial => 'bubble', :object => n
-            page.visual_effect :highlight, 'update_placeholder', :duration => 2
+            page.insert_html :after, 'update_placeholder', :partial => 'bubble', :object => n
+            page.visual_effect :highlight, dom_id(n), :duration => 2
           end
         end 
       end

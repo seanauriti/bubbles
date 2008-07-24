@@ -1,16 +1,16 @@
-<% div_for bubble, :class => 'header_style' do %> 
-	<% screenname = 'mosofoco' %>    
+<% div_for bubble do %>
 	<div class="userlink">
-   		<a href="aim:goim?screenname=<%= screenname %>"><%= bubble.user.login %></a> <em>is churning on ...</em></div>
- 
+	   	<%= link_to bubble.user.login, :controller=> "bubbles", :action => "list", :id => bubble.user.login %>  
+	    <%= link_to_aim (bubble.user) %> 
+ 	</div>
+
 	<div class="bubble_body">
 		<%= bubble.converted_body %>
+		<div class="bubble_delete">
+			<% if bubble.user == current_user %>
+				<%= link_to_remote '(pop)', :url => bubble_path(bubble),  :method => :delete %>
+		    <% end %>
+		</div>  
 	</div>
-	
-	<div class="bubble_delete">
-		<% if bubble.user == current_user %>
-			<%= link_to_remote 'kill this bubble', :url => bubble_path(bubble),  :method => :delete %>
-	    <% end %>
-	</div>
-	
+
 <% end %>

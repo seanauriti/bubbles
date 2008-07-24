@@ -4,6 +4,6 @@ class AddAimToUsers < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column "users", "aim", :string
+    remove_column "users", "aim"
   end
 end
