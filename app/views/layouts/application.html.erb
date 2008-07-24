@@ -20,7 +20,7 @@
 					<%= link_to "Report an issue", "http://code.google.com/p/bubbles/issues/list" %>
 				</h2> 
 				<% form_tag({:controller => 'bubbles', :action => "search"}, {:class => "form"}) do  %>
-				   <p><label for="q">search</label><%= text_field_tag :q %></p>    	
+				   <p><label for="q">search</label><%= text_field_tag :q, {}, {:class => 'search'} %></p>    	
 				<% end %>
 		    
 			</div>

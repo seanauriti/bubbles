@@ -1,16 +1,17 @@
 <% div_for bubble do %>
-	<div class="userlink">
-	   	<%= link_to bubble.user.login, :controller=> "bubbles", :action => "list", :id => bubble.user.login %>  
-	    <%= link_to_aim (bubble.user) %> 
- 	</div>
 
-	<div class="bubble_body">
-		<%= bubble.converted_body %>
-		<div class="bubble_delete">
-			<% if bubble.user == current_user %>
-				<%= link_to_remote '(pop)', :url => bubble_path(bubble),  :method => :delete %>
-		    <% end %>
-		</div>  
-	</div>
+	<blockquote>
+		<p>
+			<%= bubble.converted_body %>
+		</p> 
+	</blockquote>
+	<cite><strong><%= link_to bubble.user.login, :controller=> "bubbles", :action => "list", :id => bubble.user.login %></strong>  
+	
+		<%= link_to_aim (bubble.user) %>
+	
+		<% if bubble.user == current_user %>
+			<%= link_to_remote '(pop)', :url => bubble_path(bubble),  :method => :delete %>
+	    <% end %>
+	</cite>    
 
 <% end %>
