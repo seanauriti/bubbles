@@ -4,6 +4,7 @@ Syntaxi::line_number_method = 'floating'
 
 class Bubble < ActiveRecord::Base 
   belongs_to :user
+  before_create :set_defaults
   validates_length_of :body, :minimum => 1
   
   acts_as_solr
@@ -32,5 +33,12 @@ class Bubble < ActiveRecord::Base
   def self.find_new_since(last_retrieval)
     self.find(:all, :conditions => ["bubbles.created_at > ?", last_retrieval], :include => :user)
   end
+  
+  protected
+  
+    def set_defaults
+      self.solved = false 
+      return true
+    end
   
 end

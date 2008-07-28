@@ -7,7 +7,7 @@
 pre {
     color: #112;
     padding: 10px;
-    font-size: 1.1em;
+    font-size: 1.4em;
     overflow: auto;
     margin: 4px 0px;
     width: 95%;
@@ -41,8 +41,7 @@ padding: 0;
 background:#047; 
 color:#fff;
 margin: 10px 40px 40px;
-/*width: 50%;
-*/
+
 background-color: #047;
 font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
@@ -102,13 +101,12 @@ margin: 0px 5px;
 }
  
 p {
-	padding: 10px;
+
 }
 
 /* Normal Bubble */
 div.bubble {
 	width: auto;
-	font-size: 0.75em;
 	margin-bottom: 24px;
 	margin-top: 20px;
 	color:#005;
@@ -116,7 +114,7 @@ div.bubble {
 
 div.bubble blockquote {
 	margin: 0px;
-	padding: 0px;
+	padding: 10px;
 	border: 1px solid #c9c2c1;
 	background-color: #fff;
 }
@@ -168,5 +166,29 @@ div#pimped.bubble div.rounded {
 }
 div#pimped.bubble cite.rounded {
 	background: transparent url(/images/tip-pimped.gif) no-repeat 15px 0;
-}
+}    
+
+.help {
+  border: 1px solid #999;
+  background-color: #ccc;  
+  width: 140px;
+  height: 300px;
+  float: left;
+} 
+
+label {font-weight:bold;}
+fieldset {padding:1.4em;margin:0 0 1.5em 0;border:1px solid #ccc;}
+legend {font-weight:bold;font-size:1.2em;}
+input.text, input.title, textarea, select {margin:0.5em 0;border:1px solid #bbb;}
+input.text:focus, input.title:focus, textarea:focus, select:focus {border:1px solid #666;}
+input.text, input.title {width:300px;padding:5px;}
+input.title {font-size:1.5em;}
+textarea {width:390px;height:250px;padding:5px;}
+.error, .notice, .success {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
+.error {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
+.notice {background:#FFF6BF;color:#514721;border-color:#FFD324;}
+.success {background:#E6EFC2;color:#264409;border-color:#C6D880;}
+.error a {color:#8a1f11;}
+.notice a {color:#514721;}
+.success a {color:#264409;}
 

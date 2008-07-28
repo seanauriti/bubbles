@@ -24,12 +24,16 @@ class BubblesController < ApplicationController
   end  
   
   def create
-    @bubble = Bubble.new(params[:bubble])
-    @bubble.user = current_user
-    @bubble.solved = false
-    @bubble.save 
-    session[:last_retrieval] = @last_retrieval = Time.now
-    redirect_to bubbles_path
+    @bubble = Bubble.create(params[:bubble].merge(:user => current_user))
+    puts "#{params[:bubble].merge( :user_id => current_user.id, :solved => false )}"
+
+    if @bubble.errors.empty?
+    #  update_last_retrieval_time  
+      flash[:success] = 'Your bubble creation was successful'
+      redirect_to bubbles_path
+    else
+      flash[:error] = 'lack of success'
+    end   
   end
   
   def destroy
@@ -38,32 +42,29 @@ class BubblesController < ApplicationController
     render :update do |page|
       page.visual_effect :fade, dom_id(@bubble)
     end
-  end
+  end 
   
   def refresh_bubbles
-    last_retrieval = session[:last_retrieval]
-    @expired_bubbles = Bubble.find_solved_since(last_retrieval)
-    @new_bubbles = Bubble.find_new_since(last_retrieval)
-    session[:last_retrieval] = @last_retrieval = Time.now 
-    if !@expired_bubbles.empty? || !@new_bubbles.empty?
-      render :update do |page|
-        unless @expired_bubbles.empty?
-          @expired_bubbles.each do |b|
-            page.visual_effect :fade, dom_id(b) 
-          end
-        end
-        unless @new_bubbles.empty?
-          @new_bubbles.each do |n|
-            page.insert_html :after, 'update_placeholder', :partial => 'bubble', :object => n
-            page.visual_effect :highlight, dom_id(n), :duration => 2
-          end
-        end 
-      end
-    else
-      render :text => ''
-    end
-    
+    render :nothing => true and return unless bubbles_need_update?
+    render :update do |page| 
+      @expired_bubbles.each do |b|
+        page.visual_effect :fade, dom_id(b) 
+      end         
+
+      @new_bubbles.each do |n|
+        page.insert_html :after, 'update_placeholder', :partial => 'bubble', :object => n
+        page.visual_effect :highlight, dom_id(n), :duration => 2
+      end          
+    end 
+
+    update_last_retrieval_time  
   end 
-      
+  
+  private 
+    def bubbles_need_update?
+      @expired_bubbles = Bubble.find_solved_since(session[:last_retrieval])
+      @new_bubbles = Bubble.find_new_since(session[:last_retrieval])
+      !@expired_bubbles.empty? || !@new_bubbles.empty?
+    end        
   
 end

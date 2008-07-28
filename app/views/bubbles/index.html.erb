@@ -2,7 +2,9 @@
 
 
 <div id='update_placeholder'></div>
-<%= 
-		render :partial => 'bubble', :collection => @bubbles
+<% if @bubbles %>
+	<%= 
+			render :partial => 'bubble', :collection => @bubbles
     
-%>
+	%>
+<% end %>
