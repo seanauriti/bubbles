@@ -12,10 +12,12 @@
 
 	<div id="main">
 		<a href="/"><img src="/images/logo.jpg" border="0"></a>
+		
 		<% if @current_user%>
 			<div style="clear:both;">
 				<h2>
-					<%= link_to "Create a bubble", new_bubble_path %> | 
+					<%= link_to "Create a bubble", new_bubble_path %> |
+					<%= link_to "Edit Profile", edit_user_path(current_user) %> | 
 					<%= link_to "Logout", "/logout" %> |
 					<%= link_to "Report an issue", "http://code.google.com/p/bubbles/issues/list" %>
 				</h2> 
@@ -24,7 +26,17 @@
 				<% end %>
 		    
 			</div>
-		<% end %>  
+		<% end %>
+		
+		<% [:notice, :error, :success].each do |f|
+		   if (flash[f])  %>
+			<div class="<%= f.to_s %>">
+				<%= flash[f]%>
+			</div>	
+		<% 
+		   end
+		end %>
+		  
 	
 		<%= yield %>
 	</div>  

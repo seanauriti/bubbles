@@ -2,9 +2,11 @@
 <% online_img =  "http://www.aim.com/remote/gr/MNB_offline.gif" %>
 
 <% if user.aim and !user.aim.blank? %>
-	<a href="aim:goim?screenname=<%=  user.aim  %>">
-	  <img src="http://big.oscar.aol.com/<%= user.aim %>?on_url=<%=  online_img %>&off_url=<%= offline_img %>" alt="aim status" title="aim online indicator" border="0"/>
-	</a>
+	<a href="aim:goim?screenname=<%=  user.aim  %>" title="AIM message <%= user.aim %>">
+		<%= user.aim %>
+	  <!-- <img src="http://big.oscar.aol.com/<%= user.aim %>?on_url=<%=  online_img %>&off_url=<%= offline_img %>" alt="aim status" title="aim online indicator" border="0"/>   -->
+	</a>   
+
 <% else %>
     <a href="http://www.aim.com">No AIM</a>
 <% end %>
