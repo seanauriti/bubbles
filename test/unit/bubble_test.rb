@@ -14,7 +14,14 @@ class BubbleTest < ActiveSupport::TestCase
     bubble = create_bubble(:body => '')
     assert bubble.new_record?
     assert !bubble.valid?
-  end 
+  end
+  
+  def test_should_destroy_bubble
+    assert_difference 'Bubble.count' do
+      bubble = bubbles(:two)
+      bubble.expire
+    end
+  end     
   
 protected
   def create_bubble(options = {})

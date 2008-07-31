@@ -2,12 +2,13 @@ class BubblesController < ApplicationController
   before_filter :login_required
   
   def index   
-    @bubbles = Bubble.find_all_by_solved(false, :order => 'bubbles.created_at DESC', :include => :user) 
+    @bubbles = Bubble.open
+    update_last_retrieval_time
   end
   
   def list
     @user = User.find_by_login(params[:id])
-    @bubbles = Bubble.find_all_by_user_id(@user.id, :order => 'bubbles.created_at DESC', :include => :user)
+    @bubbles = Bubble.by_user(@user.id)
     render :action => "index"
   end  
   
@@ -28,7 +29,7 @@ class BubblesController < ApplicationController
     puts "#{params[:bubble].merge( :user_id => current_user.id, :solved => false )}"
 
     if @bubble.errors.empty?
-    #  update_last_retrieval_time  
+      update_last_retrieval_time  
       flash[:success] = 'Your bubble creation was successful'
       redirect_to bubbles_path
     else
@@ -62,8 +63,8 @@ class BubblesController < ApplicationController
   
   private 
     def bubbles_need_update?
-      @expired_bubbles = Bubble.find_solved_since(session[:last_retrieval])
-      @new_bubbles = Bubble.find_new_since(session[:last_retrieval])
+      @expired_bubbles = Bubble.solved_since(session[:last_retrieval])
+      @new_bubbles = Bubble.created_since(session[:last_retrieval])
       !@expired_bubbles.empty? || !@new_bubbles.empty?
     end        
   
