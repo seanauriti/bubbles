@@ -1,18 +1,28 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  title: stuck on this@!!!  
   body: |
         I'm trying to parse a string parameter from a set of hashes like this
-        and i'm finding it relatively impossible to not get ...
+        and i'm finding it relatively impossible to not get ... 
   expire_at: <%=  Time.now + 2.days  %>
   user_id: 1
   solved: false
 
 two:
-  title:  somebody please help
-  body:   |
+  body: |
         I'm sure this is easy to do, but for some reason I'm suffering
   expire_at: <%= Time.now + 2.hours %>
   user_id: 2
   solved: false
+  
+three:
+  body: |
+        this is just a test to see
+        ***ruby
+        def my_method
+          puts 'hello world'
+        end
+        ***
+  expire_at: <%= Time.now + 2.hours %>
+  solved: true
+  user_id: 1
