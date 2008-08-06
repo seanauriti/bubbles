@@ -2,7 +2,7 @@ class BubblesController < ApplicationController
   before_filter :login_required
   
   def index   
-    @bubbles = Bubble.open
+    @bubbles = Bubble.paginate :page => params[:page], :order => 'created_at DESC'
     update_last_retrieval_time
   end
   

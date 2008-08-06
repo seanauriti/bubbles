@@ -7,9 +7,9 @@ class Bubble < ActiveRecord::Base
   before_create :set_defaults
   validates_length_of :body, :minimum => 1
   
-  named_scope :all, :order => 'created_at DESC', :include => :user
+  named_scope :find_all, :order => 'created_at DESC', :include => :user
   named_scope :solved, :conditions => ['expire_at IS NOT NULL'], :include => :user
-  named_scope :open,  :conditions => ['expire_at IS NULL'], :include => :user, :order => 'created_at DESC'
+  named_scope :find_unsolved,  :conditions => ['expire_at IS NULL'], :include => :user, :order => 'created_at DESC'
   named_scope :by_user, lambda { |user| { :conditions => ["user_id = ?", user.id ], :order => "created_at DESC", :include => :user }}       
   named_scope :solved_since,  lambda { |since_dt| { :conditions => ["expire_at  > ?", since_dt ], :order => "created_at DESC"} } 
   named_scope :created_since, lambda { |since_dt| { :conditions => ["created_at > ?", since_dt ], :order => "created_at DESC"} }   
