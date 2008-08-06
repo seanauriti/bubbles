@@ -2,7 +2,9 @@
 
 
 <div id='update_placeholder'></div>
+
 <% if @bubbles %>
+	<%= will_paginate @bubbles %>  
 	<%= 
 			render :partial => 'bubble', :collection => @bubbles
     
