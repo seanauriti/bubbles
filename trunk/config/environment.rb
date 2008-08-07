@@ -58,9 +58,4 @@ Rails::Initializer.run do |config|
   # config.active_record.default_timezone = :utc     
   
   
-  require 'syntaxi'
-  Syntaxi::line_number_method = 'floating'
-  Syntaxi::wrap_enabled = false
-  Syntaxi::wrap_at_column = 70
-  
 end
