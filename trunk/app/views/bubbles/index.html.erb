@@ -4,7 +4,9 @@
 <div id='update_placeholder'></div>
 
 <% if @bubbles %>
-	<%= will_paginate @bubbles %>  
+	<% unless action_name == 'search' or action_name == 'list' %>
+		<%= will_paginate @bubbles %>
+	<% end %> 
 	<%= 
 			render :partial => 'bubble', :collection => @bubbles
     
