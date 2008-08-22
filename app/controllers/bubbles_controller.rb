@@ -8,7 +8,7 @@ class BubblesController < ApplicationController
   
   def list
     @user = User.find_by_login(params[:id])
-    @bubbles = Bubble.by_user(@user.id)
+    @bubbles = Bubble.by_user(@user)     
     render :action => "index"
   end  
   
@@ -16,6 +16,7 @@ class BubblesController < ApplicationController
     results = Bubble.find_by_solr(params[:q])
     if results.total > 0
       @bubbles = results.docs
+      @bubbles.paginate :page => params[:page]
     end
     render :action => "index" 
   end
