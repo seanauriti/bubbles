@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
+  map.resources :bots
   map.resource :session
   map.resources :bubbles
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
