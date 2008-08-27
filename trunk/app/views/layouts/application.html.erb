@@ -19,7 +19,7 @@
 					<%= link_to "Create a bubble", new_bubble_path %> |
 					<%= link_to "Edit Profile", edit_user_path(current_user) %> | 
 					<%= link_to "Logout", "/logout" %> |
-					<%= link_to "Report an issue", "http://code.google.com/p/bubbles/issues/list" %>
+					<%= link_to "Report an issue", "http://code.google.com/p/bubbles/issues/list", :target => 'new'%>
 				</h2> 
 				<% form_tag({:controller => 'bubbles', :action => "search"}, {:class => "form"}) do  %>
 				   <p><label for="q">search</label><%= text_field_tag :q, {}, {:class => 'search'} %></p>    	
