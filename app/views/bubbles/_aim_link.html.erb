@@ -4,7 +4,7 @@
 <% if user.aim and !user.aim.blank? %>
 	<a href="aim:goim?screenname=<%=  user.aim  %>" title="AIM message <%= user.aim %>">
 		<%= user.aim %>
-	  <!-- <img src="http://big.oscar.aol.com/<%= user.aim %>?on_url=<%=  online_img %>&off_url=<%= offline_img %>" alt="aim status" title="aim online indicator" border="0"/>   -->
+	  <img src="http://big.oscar.aol.com/<%= user.aim %>?on_url=<%=  online_img %>&off_url=<%= offline_img %>" alt="aim status" title="aim online indicator" border="0"/>  
 	</a>   
 
 <% else %>
