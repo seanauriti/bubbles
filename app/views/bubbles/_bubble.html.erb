@@ -5,7 +5,8 @@
 			<%= bubble.converted_body %>
 		</p> 
 	</blockquote>
-	<cite><strong><%= link_to bubble.user.login, :controller=> "bubbles", :action => "list", :id => bubble.user.login %></strong>  
+	<cite>
+		<strong><%= link_to bubble.user.login, :controller=> "bubbles", :action => "list", :id => bubble.user.login %></strong>  
 	
 		<%= link_to_aim (bubble.user) %>
 	
