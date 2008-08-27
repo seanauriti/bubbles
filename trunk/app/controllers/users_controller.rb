@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
+    flash[:notice] = "Your profile has been updated"
     redirect_to bubbles_path
   end
 
