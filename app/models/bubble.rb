@@ -18,14 +18,14 @@ class Bubble < ActiveRecord::Base
   acts_as_solr
   
   def converted_body  
-    body.gsub!(/[\*]{3}(ruby|css|html|javascript|js)/,"[code lang=\"" + '\1' + "\"]") 
+    body.gsub!(/[\*]{3}(ruby|css|html|javascript|js|pl|perl)/,"[code lang=\"" + '\1' + "\"]") 
     body.gsub!(/[\*]{3}/,"[/code]")  
 
     Syntaxi.new(body).process   
   end
   
   def count_code_delimiters
-    body.to_a.map{ |l| l.chomp =~ /code:(ruby|css|html|javascript|js)$/ }.compact.size
+    body.to_a.map{ |l| l.chomp =~ /code:(ruby|css|html|javascript|js|perl|pl)$/ }.compact.size
   end
   
   def expire
@@ -45,8 +45,8 @@ class Bubble < ActiveRecord::Base
       client = Net::TOC.new("aibubblesbot", "listerine!")
       client.connect
       
-      ['kylenicholas7'].each do |buddy|
-        buddy = client.buddy_list.buddy_named("kylenicholas7")
+      ['kylenicholas7','mosofoco','psytekxp'].each do |buddy|
+        buddy = client.buddy_list.buddy_named(buddy)
         buddy.send_im("#{self.user.aim} just created a bubble.")
       end  
     end  
