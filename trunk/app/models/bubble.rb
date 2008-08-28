@@ -5,7 +5,6 @@ Syntaxi::line_number_method = 'floating'
 class Bubble < ActiveRecord::Base 
   belongs_to :user
   before_create :set_defaults
-  after_create :send_im
   validates_length_of :body, :minimum => 1
   
   named_scope :find_all, :order => 'created_at DESC', :include => :user
@@ -41,12 +40,4 @@ class Bubble < ActiveRecord::Base
       return true
     end
     
-    def send_im
-      client = Net::TOC.new("aibubblesbot", "listerinebot!")
-      client.connect      
-      ['kylenicholas7','mosofoco','psytekxp'].each do |buddy|
-        buddy = client.buddy_list.buddy_named(buddy)
-        buddy.send_im("#{self.user.aim} just created a bubble.")
-      end  
-    end  
 end
