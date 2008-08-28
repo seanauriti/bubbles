@@ -9,9 +9,7 @@ class Bot
     client.on_im do |msg, buddy|
       response = Net::HTTP.post_form(URI.parse('http://bubbles.alexanderinteractive.com/bots'), 
                                     {'aim' => buddy, 'message' => msg})
-      if response == Net::HTTPSuccess
-        buddy.send_im("#{response.body}")
-      end
+      buddy.send_im("You just posted the following to bubbles: #{message}")
     end
     client.wait
   end
