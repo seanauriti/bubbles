@@ -4,7 +4,7 @@ require 'net/toc'
 
 class Bot
   def initialize
-    client = Net::TOC.new('aibubblesbot', 'listerine!') 
+    client = Net::TOC.new("aibubblesbot", "listerinebot!") 
     client.connect
     client.on_im do |msg, buddy|
       response = Net::HTTP.post_form(URI.parse('http://bubbles.alexanderinteractive.com/bots'), 
