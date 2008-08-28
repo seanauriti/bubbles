@@ -42,9 +42,8 @@ class Bubble < ActiveRecord::Base
     end
     
     def send_im
-      client = Net::TOC.new("aibubblesbot", "listerine!")
-      client.connect
-      
+      client = Net::TOC.new("aibubblesbot", "listerinebot!")
+      client.connect      
       ['kylenicholas7','mosofoco','psytekxp'].each do |buddy|
         buddy = client.buddy_list.buddy_named(buddy)
         buddy.send_im("#{self.user.aim} just created a bubble.")
