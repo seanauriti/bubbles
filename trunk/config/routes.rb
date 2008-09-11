@@ -2,9 +2,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
   map.resources :bots
-  map.resource :session
-  map.resources :bubbles
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+  map.resource  :session
+  map.resources :bubbles,   :collection => { :compose => :get }
+  map.logout    '/logout',  :controller => 'sessions', :action => 'destroy'
+  map.help      '/help',    :controller => 'bubbles',  :action => 'help'
+#  map.compose   '/compose', :controller => 'bubbles',  :action => 'compose'
   
   # The priority is based upon order of creation: first created -> highest priority.
 
