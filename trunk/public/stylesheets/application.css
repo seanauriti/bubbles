@@ -11,38 +11,45 @@ pre {
     overflow: auto;
     margin: 4px 0px;
     width: 95%;
+	background-color: #1b3748;
+
 } 
 
 /* Syntax highlighting */
-pre .normal {}
-pre .comment { color: #005; font-style: italic; }
-pre .keyword { color: #A00; font-weight: bold; }
-pre .method { color: #077; }
+pre .normal { }
+pre .comment {color: #1E9AE0; font-style: italic; }
+pre .keyword { color: #FFAA00; font-weight: bold; }
+pre .method { color:#EFE900;}
 pre .class { color: #074; }
 pre .module { color: #050; }
-pre .punct { color: #447; font-weight: bold; }
-pre .symbol { color: #099; }
-pre .string { color: #944; background: #FFE; }
+pre .punct { color: #FFAA00; font-weight: bold; }
+pre .symbol { color: #FF3A83; }
+pre .string { color: #55E439; }
 pre .char { color: #F07; }
-pre .ident { color: #004; }
-pre .constant { color: #07F; }
+pre .ident { color: #FB9A4B; }
+pre .constant { color: #FF3A83; }
 pre .regex { color: #B66; background: #FEF; }
 pre .number { color: #F99; }
-pre .attribute { color: #5bb; }
-pre .global { color: #7FB; }
-pre .expr { color: #227; }
+pre .attribute { color: #F6F080; }
+pre .global { color: #F8F8F8;}
+pre .expr {color: #FFB454; }
 pre .escape { color: #277; }
+pre .line_number { color: #FFAA00;;}
 
+/*width: 75px;
+padding: 0.1em 1em 0.2em 0;
+color: #888;
+background-color: #eee;   */
 
 body{
 margin:0;
 padding: 0;
 /*font:76% tahoma,verdana,sans-serif;  */
 background:#047; 
-color:#fff;
+color:#333;
 margin: 10px 40px 40px;
 
-background-color: #047;
+background-color: #fff;
 font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
@@ -70,13 +77,18 @@ padding:0;
 	color: #990000;
 }
 
+
+
 h1,h2,h3,h4{
 margin:0 0 10px 0;
 font-weight:normal;
 }
 
 h1{
-font-size:2.8em;
+font-size:410%;
+font-family: georgia, serif;
+font-weight: bold;
+color:#FB9A4B;
 }
 
 h2{
