@@ -1,7 +1,11 @@
 <%= periodically_call_remote :url => { :action => :refresh_bubbles, :last_updated => @last_retrieval } %>  
 
+<% form_tag({:controller => 'bubbles', :action => "search"}, {:class => "form"}) do  %>
+   <p><label for="q">search</label><%= text_field_tag :q, {}, {:class => 'search'} %></p>    	
+<% end %>
 
 <div id='update_placeholder'></div>
+
 
 <% if @bubbles %>
 	<% unless action_name == 'search' or action_name == 'list' %>

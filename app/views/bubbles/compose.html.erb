@@ -1,0 +1,22 @@
+<div id="hidden_holder" style="display:none"></div>
+<div id="final_bubble_body" style="display:none"></div>
+<div id="bubble_working_area"></div>
+
+<form id='bubble_form' action="/bubbles/append" method="post" onsubmit="new Ajax.Updater('hidden_holder', '/bubbles/append', { asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return false;"> 
+
+	<p class="field"> 
+		<textarea cols="80" id="body" name="body" rows="20"></textarea>
+	</p>
+	<input id="entry_type" name="entry_type" type="hidden" value="nada" />
+	<input id="final_body" name="final_body" type="hidden">
+	 
+	<p style="clear:left"> 
+		<input type="image" src="1.gif" value="Add Code"      onClick="$('entry_type').value = 'code';"/>    
+		<input type="image" src="2.gif" value="Add Text"      onClick="$('entry_type').value = 'text';"/>
+		<input type="image" src="3.gif" value="Submit Bubble" onClick="$('bubble_form').action = '/bubbles/create';$('final_body').value = $('final_bubble_body').innerHTML;$('bubble_form').submit();">
+	</p> 
+ 
+</form>
+
+
+      
