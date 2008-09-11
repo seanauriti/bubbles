@@ -1,18 +1,20 @@
 <% div_for bubble do %>
-
-	<blockquote>
+	<blockquote> 
+		<%= bubble.id %>
 		<p>
-			<%= bubble.converted_body %>
+			<%= format_bubble(bubble.body) %>
 		</p> 
 	</blockquote>
 	<cite>
-		<strong><%= link_to bubble.user.login, :controller=> "bubbles", :action => "list", :id => bubble.user.login %></strong>  
-	
+		<strong>
+			<%= link_to bubble.user.login, :controller=> "bubbles", :action => "list", :id => bubble.user.login %>
+		</strong>  
+
 		<%= link_to_aim (bubble.user) %>
-	
+
 		<% if bubble.user == current_user %>
 			<%= link_to_remote '(pop)', :url => bubble_path(bubble),  :method => :delete %>
 	    <% end %>
-	</cite>    
-
+	    <%= link_to 'reply',  edit_bubble_path(bubble) %>
+	</cite>   
 <% end %>
