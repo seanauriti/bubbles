@@ -1,6 +1,6 @@
 <% div_for bubble do %>
 	<blockquote> 
-		<%= bubble.id %>
+		<strong><%= time_ago_in_words(bubble.updated_at) %> ago</strong>
 		<p>
 			<%= format_bubble(bubble.body) %>
 		</p> 

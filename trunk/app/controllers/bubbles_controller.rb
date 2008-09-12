@@ -1,4 +1,5 @@
 class BubblesController < ApplicationController 
+  
   include SyntaxFormatting
   before_filter :login_required
   
@@ -51,6 +52,10 @@ class BubblesController < ApplicationController
   end
   
   def append
+    # This method doesn't actually create any bubbles - it just concatenates syntax-colored code
+    # into the preview pane (bubble_working_area) and readies the user for either a +create+ or 
+    # an +update+ both of which involve the submission of a raw [code]-delimited entry (bubble_working_area)
+    # just prior to submit
     body_build   = params[:entry_type] == "code" ? delimited(params[:body]) : params[:body]
     preview_pane = params[:entry_type] == "code" ? format_syntax(delimited(params[:body])) : params[:body]   
     respond_to do |format|
@@ -83,10 +88,8 @@ class BubblesController < ApplicationController
   def update
     @bubble = Bubble.find(params[:id])
     @user   = User.find(current_user)
-    @bubble.append(params[:final_body].to_s, @user)
-    puts "******crrent user = #{@user.login}*******here is the params#{params[:final_body]}" 
-    unless @bubble.save then puts "#{@bubble.errors}"  end
-    puts "here's what's in the bubble #{@bubble.inspect}"
+    
+    @bubble.append(params[:final_body], @user)
     redirect_to bubbles_path
   end
   
@@ -122,7 +125,6 @@ class BubblesController < ApplicationController
   private 
     def bubbles_need_update?
       @expired_bubbles = Bubble.solved_since(session[:last_retrieval])
-      puts "solved since : #{session[:last_retrieval]} - there are #{@expired_bubbles.count}"
       @new_bubbles = Bubble.created_since(session[:last_retrieval])
       !@expired_bubbles.empty? || !@new_bubbles.empty?
     end        

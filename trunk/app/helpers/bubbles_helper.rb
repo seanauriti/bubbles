@@ -8,7 +8,7 @@ module BubblesHelper
   
   def format_bubble(body)
     auto_link(format_syntax(body).gsub("\n","<br/>"))
-  end
+  end  
 
   
 end
