@@ -11,9 +11,9 @@
 	<input id="final_body" name="final_body" type="hidden">
 	 
 	<p style="clear:left"> 
-		<input type="image" src="1.gif" value="Add Code"      onClick="$('entry_type').value = 'code';"/>    
-		<input type="image" src="2.gif" value="Add Text"      onClick="$('entry_type').value = 'text';"/>
-		<input type="image" src="3.gif" value="Submit Bubble" onClick="$('bubble_form').action = '/bubbles/create';$('final_body').value = $('final_bubble_body').innerHTML;$('bubble_form').submit();">
+		<input type="submit" value="Add Code"      onClick="$('entry_type').value = 'code';"/>    
+		<input type="submit" value="Add Text"      onClick="$('entry_type').value = 'text';"/>
+		<input type="submit" value="Submit Bubble" onClick="$('bubble_form').action = '/bubbles/create';$('final_body').value = $('final_bubble_body').innerHTML;$('bubble_form').submit();">
 	</p> 
  
 </form>
