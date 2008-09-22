@@ -10,7 +10,7 @@ class AimClient
       response = Net::HTTP.post_form(URI.parse('http://bubbles.alexanderinteractive.com/bots'), 
                                     {'aim' => buddy, 'message' => msg})
                                     
-      buddy.send_im("You just posted the following to bubbles: #{message}")
+      #buddy.send_im("You just posted the following to bubbles: #{message}")
     end
   end
   
