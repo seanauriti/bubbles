@@ -16,13 +16,14 @@
 		
 		<% if @current_user%>
 			<div style="clear:both;">
-				<h2>
+				<h3>
+					<%= link_to "Home", bubbles_path %> |   
 					<%= link_to "Create a bubble", compose_bubbles_path %> |
 					<%= link_to "Edit Profile", edit_user_path(current_user) %> | 
 					<%= link_to "Logout", "/logout" %> |
 					<%= link_to "Help", "/help" %> |
 					<%= link_to "Report an issue", "http://code.google.com/p/bubbles/issues/list", :target => 'new'%>
-				</h2> 
+				</h3> 
 			</div>
 		<% end %>
 		
