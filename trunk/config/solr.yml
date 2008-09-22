@@ -2,6 +2,9 @@
 #
 # If you change the host or port number here, make sure you update 
 # them in your Solr config file
+ 
+test:
+  url: http://localhost:8981/solr
 
 development:
   url: http://localhost:8982/solr

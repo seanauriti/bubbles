@@ -132,11 +132,5 @@ class BubblesController < ApplicationController
       @expired_bubbles = Bubble.solved_since(session[:last_retrieval])
       @new_bubbles = Bubble.created_since(session[:last_retrieval])
       !@expired_bubbles.empty? || !@new_bubbles.empty?
-    end
-    
-    def send_ims
-      @users.each do |u|
-        u.send
-      end
-    end       
+    end     
 end
