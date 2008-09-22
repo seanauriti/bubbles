@@ -1,7 +1,12 @@
 class Bubble < ActiveRecord::Base 
+  include AimNotifications
   
   belongs_to :user
   before_create :set_defaults
+  
+  after_create :send_new_bubble_notifications
+  after_update :send_replied_to_bubble_notifications   
+  
   validates_length_of :body, :minimum => 1
   
   named_scope :find_all,       :order      =>  'created_at DESC',    :include => :user
@@ -14,6 +19,8 @@ class Bubble < ActiveRecord::Base
   
   acts_as_solr 
   
+  LINK_TO_BUBBLES = "check out http://bubbles.alexanderinteractive.com for more details"
+  
   def append(reply, author)
     self.body += "\n<< #{author.login} says ...\n" 
     self.body += "\n#{reply}\n" 
@@ -24,12 +31,22 @@ class Bubble < ActiveRecord::Base
     self.solved = true
     self.expire_at = Time.now
     save
-  end 
+  end
   
   protected
     def set_defaults
       self.solved = false
       self.created_at = Time.now
       self.expire_at = 1.day.from_now
+    end
+    
+    def send_new_bubble_notifications
+      User.wanting_notifications.each do |u|
+        send_aim(u.aim, "A Bubble has been created - #{LINK_TO_BUBBLES}")
+      end
+    end
+    
+    def send_replied_to_bubble_notifications
+      send_aim(self.user.aim, "Someone has replied to your Bubble - #{LINK_TO_BUBBLES}")
     end
 end

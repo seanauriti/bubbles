@@ -8,42 +8,39 @@ class BubblesControllerTest < ActionController::TestCase
       @controller.stubs(:current_user).returns(Factory(:user))   
     end
   
-    context "GET :index" do
-      setup do
-        get :index
-      end
-      
+    context "on GET :index" do
+      setup { get :index }      
       should_assign_to    :bubbles                                
       should_respond_with :success
     end 
   
     context "on Create" do
-      setup do
-        post :create, :bubble => Factory.attributes_for(:bubble)
-      end
-    
+      setup { post :create, :bubble => Factory.attributes_for(:bubble)  }
       should_respond_with :success
-         
+      
+      should "inform others of the bubble" do
+      
+      end  
     end
   
     context "on Append" do
-      setup do
-        post :append, :body => 'try to append this'
+      setup { xhr :post, :append, :body => 'try to append this' }
+      should_respond_with :success
+      
+      should "get back an Insertion" do
+        assert_match /Insertion/, @response.body
       end
       
-      should_respond_with :success
-      should "get back an assertion" do
-        assert_match /Insertion/, @response.body
-      end    
-    end
-             
+      should "blank out the textarea" do
+        assert_match /body/, @response.body
+      end     
+    end 
+          
     context "on Pop!" do
       setup do
-
         @bubble1 = Factory(:bubble)
         @bubble2 = Factory(:another_bubble)
-
-        puts "Count => #{@count = Bubble.find_unsolved.count}" 
+        @count = Bubble.count
         post :destroy, :id => @bubble1.id 
       end
     
