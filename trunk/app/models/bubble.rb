@@ -12,25 +12,7 @@ class Bubble < ActiveRecord::Base
   named_scope :solved_since,  lambda { |since_dt| { :conditions => ["expire_at  < ?", since_dt + 5.seconds ], :order => "created_at DESC"} } 
   named_scope :created_since, lambda { |since_dt| { :conditions => ["created_at > ?", since_dt ], :order => "created_at DESC"} }   
   
-  acts_as_solr
-  
-  # def replace_delimiters  
-  #   body.gsub!(/[\*]{3}(ruby|css|html|javascript|js|pl|perl)/,"[code lang=\"" + '\1' + "\"]") 
-  #   body.gsub!(/[\*]{3}/,"[/code]")
-  # end     
-  
-  # def converted_body
-  #   #replace_delimiters
-  #   format_syntax(body)
-  # end
-  # 
-  # def add_code(code, lang='ruby')
-  #   body << "[code lang=#{lang}]#{code}[/code]"
-  # end
-  # 
-  # def add_text(text)
-  #   body << text
-  # end     
+  acts_as_solr 
   
   def append(reply, author)
     self.body += "\n<< #{author.login} says ...\n" 

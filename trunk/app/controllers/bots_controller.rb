@@ -6,6 +6,7 @@ class BotsController < ApplicationController
       render :text => "Thanks, #{user.login}.  Your bubble was successfully posted."
     end
   end
+  
 
 end
 
