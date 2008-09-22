@@ -63,6 +63,7 @@ class BubblesController < ApplicationController
         render :update do |page|
           page.insert_html :bottom, 'final_bubble_body',   body_build
           page.insert_html :bottom, 'bubble_working_area', preview_pane
+          page[:body].value = ''
         end
       #render :text => @bubble.converted_body
       }
@@ -71,6 +72,10 @@ class BubblesController < ApplicationController
   
   def create
     @bubble = Bubble.create({:body => params[:final_body]}.merge(:user => current_user))
+    
+    @users = User.find_by_wants_aim_notifications(true)
+    
+    
     respond_to do |format|
       if @bubble.errors.empty?
         update_last_retrieval_time  
@@ -127,6 +132,11 @@ class BubblesController < ApplicationController
       @expired_bubbles = Bubble.solved_since(session[:last_retrieval])
       @new_bubbles = Bubble.created_since(session[:last_retrieval])
       !@expired_bubbles.empty? || !@new_bubbles.empty?
-    end        
-  
+    end
+    
+    def send_ims
+      @users.each do |u|
+        u.send
+      end
+    end       
 end
