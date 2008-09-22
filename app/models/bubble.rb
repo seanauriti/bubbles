@@ -1,5 +1,6 @@
+require 'aim_client'
+
 class Bubble < ActiveRecord::Base 
-  include AimNotifications
   
   belongs_to :user
   before_create :set_defaults
@@ -41,12 +42,14 @@ class Bubble < ActiveRecord::Base
     end
     
     def send_new_bubble_notifications
+      $client ||= AimClient.new
       User.wanting_notifications.each do |u|
-        send_aim(u.aim, "A Bubble has been created - #{LINK_TO_BUBBLES}")
+        $client.send_aim(u.aim, "A Bubble has been created - #{LINK_TO_BUBBLES}")
       end
     end
     
     def send_replied_to_bubble_notifications
-      send_aim(self.user.aim, "Someone has replied to your Bubble - #{LINK_TO_BUBBLES}")
+      $client ||= AimClient.new
+      $client.send_aim(self.user.aim, "Someone has replied to your Bubble - #{LINK_TO_BUBBLES}")
     end
 end
