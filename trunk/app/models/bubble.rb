@@ -6,7 +6,6 @@ class Bubble < ActiveRecord::Base
   before_create :set_defaults
   
   after_create :send_new_bubble_notifications
-  after_update :send_replied_to_bubble_notifications   
   
   validates_length_of :body, :minimum => 1
   
@@ -26,6 +25,7 @@ class Bubble < ActiveRecord::Base
     self.body += "\n<< #{author.login} says ...\n" 
     self.body += "\n#{reply}\n" 
     self.save!
+    send_replied_to_bubble_notifications
   end 
   
   def expire
