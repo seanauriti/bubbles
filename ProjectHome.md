@@ -1,0 +1,1 @@
+This is an easy way groups of developers to show the code they're working on without disrupting each other.  It allows for easy mentoring, real-time code reviews, and general productivity
