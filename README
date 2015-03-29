@@ -3,4 +3,4 @@ gem install sqlite3-ruby (if you don't have it)
 
 An idea from Mike@AI - allow coding issues to surface through a chat like interface and reward help. Currently programs like Slack solve this issue, however they do not have the rewarding aspect.
 
-Originally hosted on Google code here https://code.google.com/p/bubbles/ and moved because they are shutting down.
+Originally hosted on Google code here <a href="https://code.google.com/p/bubbles/">https://code.google.com/p/bubbles/</a> and moved because they are shutting down.
